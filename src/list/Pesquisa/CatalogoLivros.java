@@ -23,8 +23,10 @@ public class CatalogoLivros {
                     livrosPorAutor.add(l);
                 }
             }
+            return livrosPorAutor;
+        } else {
+            throw new RuntimeException("A lista está vazia!");
         }
-        return livrosPorAutor;
     }
 
     public List<Livro> pesquisarPorIntervaloAnos(int anoInicial, int anoFinal) {
@@ -35,8 +37,10 @@ public class CatalogoLivros {
                     livrosPorIntervaloAnos.add(l);
                 }
             }
+            return livrosPorIntervaloAnos;
+        } else {
+            throw new RuntimeException("A lista está vazia!");
         }
-        return livrosPorIntervaloAnos;
     }
 
     public Livro pesquisarPorTitulo(String titulo) {
@@ -48,7 +52,26 @@ public class CatalogoLivros {
                     break;
                 }
             }
+            return livroPorTitulo;
+        } else {
+            throw new RuntimeException("A lista está vazia!");
         }
-        return livroPorTitulo;
+    }
+
+    public static void main(String[] args) {
+        // Criando uma instância do catálogo de livros
+        CatalogoLivros catalogoLivros = new CatalogoLivros();
+
+        // Adicionando livros ao catálogo
+        catalogoLivros.adicionarLivro("Livro 1", "Autor 1", 2020);
+        catalogoLivros.adicionarLivro("Livro 1", "Autor 2", 2021);
+        catalogoLivros.adicionarLivro("Livro 2", "Autor 2", 2022);
+        catalogoLivros.adicionarLivro("Livro 3", "Autor 3", 2023);
+        catalogoLivros.adicionarLivro("Livro 4", "Autor 4", 1994);
+
+        System.out.println(catalogoLivros.pesquisarPorAutor("Autor 2"));
+        System.out.println(catalogoLivros.pesquisarPorIntervaloAnos(2020, 2022));
+        System.out.println(catalogoLivros.pesquisarPorTitulo("Livro 1"));
+
     }
 }
